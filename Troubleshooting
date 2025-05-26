@@ -9,3 +9,8 @@ docker inspect gitlab --format '{{.State.Health.Status}}'
 CPU & RAM Usage for a container 
 ------------------------------------------------------------------
 docker stats gitlab
+
+Defailt password for gitlab
+------------------------------------------------------------------
+docker exec -it gitlab cat /etc/gitlab/initial_root_password
+
