@@ -5,3 +5,7 @@ sudo docker exec -it gitlab grep 'Password:' /etc/gitlab/initial_root_password
 Verify Container Health:
 ------------------------------------------------------------------
 docker inspect gitlab --format '{{.State.Health.Status}}'
+
+CPU & RAM Usage for a container 
+------------------------------------------------------------------
+docker stats gitlab
