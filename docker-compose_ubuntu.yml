@@ -2,19 +2,23 @@ version: '3.3'
 
 services:
   gitlab:
-    image: gitlab/gitlab-ee:16.11.1-ee.0
+    image: gitlab/gitlab-ce:latest
     container_name: gitlab
-    restart: always
-    hostname: 'gitlab.example.com'
-    environment:
-      GITLAB_OMNIBUS_CONFIG: |
-        external_url 'https://gitlab.example.com'
+    restart: unless-stopped
+    hostname: gitlab.local
     ports:
-      - '8085:80'
-      - '8443:443'
-      - '2222:22'
+      - "8081:80"       # Web UI
+      - "443:443"       # HTTPS (optional)
+      - "2222:22"         # SSH for Git
     volumes:
-      - '/srv/gitlab/config:/etc/gitlab'
-      - '/srv/gitlab/logs:/var/log/gitlab'
-      - '/srv/gitlab/data:/var/opt/gitlab'
+      - gitlab_config:/etc/gitlab
+      - gitlab_logs:/var/log/gitlab
+      - gitlab_data:/var/opt/gitlab
     shm_size: '256m'
+
+volumes:
+  jenkins_home:
+  gitlab_config:
+  gitlab_logs:
+  gitlab_data:
+
