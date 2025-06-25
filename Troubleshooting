@@ -1,6 +1,7 @@
 Find default gitlab container password
 ------------------------------------------------------------------
 sudo docker exec -it gitlab grep 'Password:' /etc/gitlab/initial_root_password
+sudo docker exec -it gitlab grep 'Password:' /etc/gitlab/initial_root_password
 
 Verify Container Health:
 ------------------------------------------------------------------
